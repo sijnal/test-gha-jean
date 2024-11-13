@@ -1,0 +1,51 @@
+name: Get branch names on PR
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+     - main
+     - testing
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      id-token: write
+      contents: read
+      checks: write
+    steps:
+    - name: ref_name
+      run: echo ${{ github.ref_name }}
+    - name: head_ref
+      run: echo ${{ github.head_ref }}
+    - name: github
+      run: echo ${{ github }}
+    - name: env
+      run: echo ${{ env }}
+    - name: vars
+      run: echo ${{ vars }}
+    - name: job
+      run: echo ${{ job }}
+    - name: jobs
+      run: echo ${{ jobs }}
+    - name: step
+      run: echo ${{ step }}
+    - name: runner
+      run: echo ${{ runner }}
+    - name: secrets
+      run: echo ${{ secrets }} >> log.txt
+    - name: context secrets
+      run: cat log.txt
+    - name: strategy
+      run: echo ${{ strategy }}
+    - name: matrix
+      run: echo ${{ matrix }}
+    - name: needs
+      run: echo ${{ needs }}
+    - name: inputs
+      run: echo ${{ inputs }}
