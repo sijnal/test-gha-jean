@@ -1,4 +1,4 @@
-name: Get branch names on PR
+name: Get branch names on PR v2
 on:
   workflow_dispatch:
   pull_request:
