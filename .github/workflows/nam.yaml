@@ -19,33 +19,41 @@ jobs:
       contents: read
       checks: write
     steps:
-    - name: ref_name
-      run: echo ${{ github.ref_name }}
+    - name: base_ref
+      run: |
+        echo "base_ref: ${{ github.base_ref }}"
     - name: head_ref
-      run: echo ${{ github.head_ref }}
-    - name: github
-      run: echo ${{ github }}
-    - name: env
-      run: echo ${{ env }}
-    - name: vars
-      run: echo ${{ vars }}
-    - name: job
-      run: echo ${{ job }}
-    - name: jobs
-      run: echo ${{ jobs }}
-    - name: step
-      run: echo ${{ step }}
-    - name: runner
-      run: echo ${{ runner }}
-    - name: secrets
-      run: echo ${{ secrets }} >> log.txt
-    - name: context secrets
+      run: |
+        echo "head_ref: ${{ github.head_ref }}"
+    - name: github context (JSON format)
+      run: |
+        echo "${{ toJSON(github) }}"
+    - name: env context
+      run: |
+        echo "${{ toJSON(env) }}"
+    - name: job context
+      run: |
+        echo "${{ toJSON(job) }}"
+    - name: steps context
+      run: |
+        echo "${{ toJSON(steps) }}"
+    - name: runner context
+      run: |
+        echo "${{ toJSON(runner) }}"
+    - name: secrets context
+      run: |
+        echo "${{ toJSON(secrets) }}" >> log.txt
+    - name: context secrets output
       run: cat log.txt
-    - name: strategy
-      run: echo ${{ strategy }}
-    - name: matrix
-      run: echo ${{ matrix }}
-    - name: needs
-      run: echo ${{ needs }}
-    - name: inputs
-      run: echo ${{ inputs }}
+    - name: strategy context
+      run: |
+        echo "${{ toJSON(strategy) }}"
+    - name: matrix context
+      run: |
+        echo "${{ toJSON(matrix) }}"
+    - name: needs context
+      run: |
+        echo "${{ toJSON(needs) }}"
+    - name: inputs context
+      run: |
+        echo "${{ toJSON(inputs) }}"
