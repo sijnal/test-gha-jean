@@ -20,28 +20,40 @@ jobs:
       checks: write
     steps:
     - name: ref_name
-      run: echo "ref_name: ${{ github.ref_name }}"
+      run: |
+        echo "ref_name: ${{ github.ref_name }}"
     - name: head_ref
-      run: echo "head_ref: ${{ github.head_ref }}"
+      run: |
+        echo "head_ref: ${{ github.head_ref }}"
     - name: github context (JSON format)
-      run: echo "${{ toJSON(github) }}"
+      run: |
+        echo "${{ toJSON(github) }}"
     - name: env context
-      run: echo "${{ toJSON(env) }}"
+      run: |
+        echo "${{ toJSON(env) }}"
     - name: job context
-      run: echo "${{ toJSON(job) }}"
+      run: |
+        echo "${{ toJSON(job) }}"
     - name: steps context
-      run: echo "${{ toJSON(steps) }}"
+      run: |
+        echo "${{ toJSON(steps) }}"
     - name: runner context
-      run: echo "${{ toJSON(runner) }}"
+      run: |
+        echo "${{ toJSON(runner) }}"
     - name: secrets context
-      run: echo "${{ toJSON(secrets) }}" >> log.txt
+      run: |
+        echo "${{ toJSON(secrets) }}" >> log.txt
     - name: context secrets output
       run: cat log.txt
     - name: strategy context
-      run: echo "${{ toJSON(strategy) }}"
+      run: |
+        echo "${{ toJSON(strategy) }}"
     - name: matrix context
-      run: echo "${{ toJSON(matrix) }}"
+      run: |
+        echo "${{ toJSON(matrix) }}"
     - name: needs context
-      run: echo "${{ toJSON(needs) }}"
+      run: |
+        echo "${{ toJSON(needs) }}"
     - name: inputs context
-      run: echo "${{ toJSON(inputs) }}"
+      run: |
+        echo "${{ toJSON(inputs) }}"
