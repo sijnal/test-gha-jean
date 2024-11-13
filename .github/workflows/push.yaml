@@ -1,0 +1,21 @@
+name: test push
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - testing
+    paths-ignore:
+     - '.github/workflows/**'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      id-token: write
+      contents: read
+      checks: write
+    steps:
+    - name: Clone Repository
+      uses: actions/checkout@v4
