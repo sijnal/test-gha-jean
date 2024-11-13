@@ -31,8 +31,6 @@ jobs:
       run: echo ${{ vars }}
     - name: job
       run: echo ${{ job }}
-    - name: jobs
-      run: echo ${{ jobs }}
     - name: step
       run: echo ${{ step }}
     - name: runner
