@@ -19,9 +19,9 @@ jobs:
       contents: read
       checks: write
     steps:
-    - name: ref_name
+    - name: base_ref
       run: |
-        echo "ref_name: ${{ github.ref_name }}"
+        echo "base_ref: ${{ github.base_ref }}"
     - name: head_ref
       run: |
         echo "head_ref: ${{ github.head_ref }}"
