@@ -2,13 +2,11 @@ name: Get branch names on PR
 on:
   workflow_dispatch:
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
     branches:
      - main
      - testing
+    paths:
+     - '!.github/workflows/**'
 
 jobs:
   terraform:
